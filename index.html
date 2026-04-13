@@ -780,22 +780,35 @@
     /* ===== RESPONSIVE ===== */
     @media (max-width: 768px) {
       .hero {
+        height: auto;
         min-height: auto;
+        max-height: none;
         grid-template-columns: 1fr;
       }
 
       .hero__left {
-        padding: 48px 24px 36px;
+        padding: 40px 24px 36px;
         order: 2;
       }
 
       .hero__right {
         order: 1;
-        max-height: 50vh;
+        position: relative;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        max-height: 62vh;
+      }
+
+      .hero__image {
+        position: absolute;
+        inset: 0;
       }
 
       .hero__image img {
-        height: 50vh;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 30%;
       }
 
       .hero__info {
