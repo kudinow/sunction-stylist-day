@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>День стилиста в sunction.store</title>
+  <meta name="description" content="День стилиста в sunction.store. Бесплатная консультация по подбору очков Tom Ford, Prada, Gucci. 19 апреля, Москва. Забронируйте место.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Nunito+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg: #F5F5F5;
+      --bg-white: #FFFFFF;
+      --bg-dark: #1A1A1A;
+      --bg-card: #FAFAFA;
+      --text: #1A1A1A;
+      --text-secondary: #555555;
+      --text-muted: #888888;
+      --accent: #1A1A1A;
+      --border: #E0E0E0;
+      --border-light: #EEEEEE;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Nunito Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- Fade-up --- */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-up-delay-1 { transition-delay: 0.12s; }
+    .fade-up-delay-2 { transition-delay: 0.24s; }
+    .fade-up-delay-3 { transition-delay: 0.36s; }
+    .fade-up-delay-4 { transition-delay: 0.48s; }
+
+    /* ===== HERO ===== */
+    .hero {
+      height: 100vh;
+      min-height: 680px;
+      max-height: 900px;
+      display: grid;
+      grid-template-columns: 45fr 55fr;
+      position: relative;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .hero__left {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 56px 60px 72px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero__logo {
+      margin-bottom: 40px;
+    }
+
+    .hero__logo img {
+      height: 36px;
+      width: auto;
+      max-width: 72px;
+      object-fit: contain;
+    }
+
+    .hero__eyebrow {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .hero__title {
+      font-family: 'Cormorant', serif;
+      font-weight: 400;
+      font-size: clamp(36px, 4.5vw, 56px);
+      line-height: 1.15;
+      margin-bottom: 20px;
+      color: var(--text);
+    }
+
+    .hero__subtitle {
+      font-weight: 300;
+      font-size: clamp(15px, 1.8vw, 18px);
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 32px;
+      max-width: 440px;
+    }
+
+    .hero__value {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .hero__value strong {
+      font-weight: 600;
+    }
+
+    .hero__value-badge {
+      background: var(--bg-dark);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .hero__info {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 28px;
+      margin-bottom: 36px;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .hero__info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero__info-item svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 1.5;
+      flex-shrink: 0;
+    }
+
+    .hero__cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 40px;
+      background: var(--bg-dark);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      letter-spacing: 0.5px;
+      transition: all 0.3s ease;
+      align-self: flex-start;
+    }
+
+    .hero__cta:hover {
+      background: #333;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .hero__cta-note {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
+    }
+
+    .hero__right {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero__image {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero__image img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* ===== BRANDS ===== */
+    .brands {
+      padding: 20px 0;
+      border-top: 1px solid var(--border-light);
+      border-bottom: 1px solid var(--border-light);
+      background: var(--bg-white);
+      overflow: hidden;
+    }
+
+    .brands__track {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+
+    .brands__track:hover {
+      animation-play-state: paused;
+    }
+
+    .brands__set {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-shrink: 0;
+    }
+
+    .brands__item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 28px;
+      white-space: nowrap;
+      opacity: 0.45;
+      transition: opacity 0.3s;
+    }
+
+    .brands__item:hover {
+      opacity: 0.85;
+    }
+
+    .brands__item img {
+      height: 22px;
+      width: auto;
+      max-width: 120px;
+      object-fit: contain;
+      filter: grayscale(100%);
+    }
+
+    .brands__dot {
+      width: 4px;
+      height: 4px;
+      background: var(--border);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* ===== STYLIST ===== */
+    .stylist {
+      padding: 80px 24px;
+      background: var(--bg);
+    }
+
+    .stylist__inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .stylist__photo {
+      width: 240px;
+      height: 300px;
+      background: var(--border-light);
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stylist__photo-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      color: var(--text-muted);
+      text-align: center;
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    /* Когда будет фото стилиста: */
+    .stylist__photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .stylist__content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .stylist__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .stylist__name {
+      font-family: 'Cormorant', serif;
+      font-size: 32px;
+      font-weight: 400;
+      color: var(--text);
+    }
+
+    .stylist__role {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .stylist__bio {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 440px;
+    }
+
+    .stylist__quote {
+      font-family: 'Cormorant', serif;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.5;
+      color: var(--text);
+      border-left: 2px solid var(--border);
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+
+    /* ===== BENEFITS ===== */
+    .benefits {
+      padding: 80px 24px;
+      background: var(--bg-white);
+    }
+
+    .benefits__inner {
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .benefits__title {
+      font-family: 'Cormorant', serif;
+      font-weight: 400;
+      font-size: clamp(28px, 4vw, 40px);
+      text-align: center;
+      margin-bottom: 48px;
+      color: var(--text);
+    }
+
+    .benefits__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .benefit-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 36px 28px 32px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .benefit-card__number {
+      font-family: 'Cormorant', serif;
+      font-size: 48px;
+      font-weight: 300;
+      color: var(--border);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .benefit-card__title {
+      font-family: 'Cormorant', serif;
+      font-weight: 500;
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .benefit-card__text {
+      font-weight: 300;
+      font-size: 14px;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+
+    /* ===== SIGNUP ===== */
+    .signup {
+      padding: 80px 24px 100px;
+      background: var(--bg);
+    }
+
+    .signup__inner {
+      max-width: 520px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .signup__spots {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-dark);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      padding: 8px 18px;
+      border-radius: 6px;
+      margin-bottom: 24px;
+    }
+
+    .signup__spots-dot {
+      width: 6px;
+      height: 6px;
+      background: #4ADE80;
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .signup__title {
+      font-family: 'Cormorant', serif;
+      font-weight: 400;
+      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .signup__subtitle {
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .signup__reason {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+    }
+
+    .signup__form {
+      background: var(--bg-white);
+      border-radius: 16px;
+      padding: 36px 32px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      border: 1px solid var(--border-light);
+      text-align: left;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 15px;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.3s, box-shadow 0.3s;
+      outline: none;
+    }
+
+    .form-group input:focus {
+      border-color: var(--text);
+      box-shadow: 0 0 0 3px rgba(26,26,26,0.06);
+    }
+
+    .form-group input::placeholder {
+      color: #BBBBBB;
+    }
+
+    .form-checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 24px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .form-checkbox input { display: none; }
+
+    .form-checkbox__box {
+      width: 20px;
+      height: 20px;
+      min-width: 20px;
+      border: 1.5px solid var(--border);
+      border-radius: 5px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      margin-top: 1px;
+      background: var(--bg);
+    }
+
+    .form-checkbox input:checked + .form-checkbox__box {
+      background: var(--bg-dark);
+      border-color: var(--bg-dark);
+    }
+
+    .form-checkbox__box svg {
+      width: 12px;
+      height: 12px;
+      stroke: #fff;
+      fill: none;
+      stroke-width: 2.5;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    .form-checkbox input:checked + .form-checkbox__box svg {
+      opacity: 1;
+    }
+
+    .form-checkbox__text {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    .form-checkbox__text a {
+      color: var(--text-secondary);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .form-submit {
+      width: 100%;
+      padding: 16px;
+      background: var(--bg-dark);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-weight: 500;
+      font-size: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .form-submit:hover:not(:disabled) {
+      background: #333;
+    }
+
+    .form-submit:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 14px;
+      line-height: 1.5;
+    }
+
+    /* ===== SUCCESS STATE ===== */
+    .success {
+      display: none;
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .success.show { display: block; }
+
+    .success__icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 20px;
+      border-radius: 50%;
+      background: #F0FDF4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .success__icon svg {
+      width: 24px;
+      height: 24px;
+      stroke: #22C55E;
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .success__title {
+      font-family: 'Cormorant', serif;
+      font-weight: 500;
+      font-size: 26px;
+      margin-bottom: 6px;
+      color: var(--text);
+    }
+
+    .success__booking {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 24px;
+    }
+
+    .success__details {
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .success__detail {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .success__detail svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--text-muted);
+      fill: none;
+      stroke-width: 1.5;
+      flex-shrink: 0;
+    }
+
+    .success__actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .success__btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-family: 'Nunito Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .success__btn--primary {
+      background: var(--bg-dark);
+      color: #fff;
+    }
+
+    .success__btn--primary:hover {
+      background: #333;
+    }
+
+    .success__btn--secondary {
+      background: var(--bg);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .success__btn--secondary:hover {
+      background: var(--border-light);
+    }
+
+    .success__btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.5;
+    }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      padding: 40px 24px 28px;
+      border-top: 1px solid var(--border-light);
+      text-align: center;
+    }
+
+    .footer__logo {
+      margin-bottom: 16px;
+    }
+
+    .footer__logo img {
+      height: 26px;
+      width: auto;
+      max-width: 64px;
+      object-fit: contain;
+    }
+
+    .footer__contacts {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 6px 24px;
+      margin-bottom: 16px;
+    }
+
+    .footer__link {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer__link:hover {
+      color: var(--text);
+    }
+
+    .footer__copy {
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 768px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .hero__left {
+        padding: 48px 24px 36px;
+        order: 2;
+      }
+
+      .hero__right {
+        order: 1;
+        max-height: 50vh;
+      }
+
+      .hero__image img {
+        height: 50vh;
+      }
+
+      .hero__info {
+        flex-direction: column;
+        gap: 6px;
+      }
+
+      .stylist__inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 28px;
+      }
+
+      .stylist__photo {
+        width: 180px;
+        height: 220px;
+        margin: 0 auto;
+      }
+
+      .stylist__content {
+        align-items: center;
+      }
+
+      .stylist__bio, .stylist__quote {
+        max-width: 100%;
+      }
+
+      .stylist__quote {
+        border-left: none;
+        padding-left: 0;
+        text-align: center;
+      }
+
+      .benefits__grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .benefit-card {
+        padding: 28px 24px 24px;
+      }
+
+      .signup__form {
+        padding: 28px 20px;
+      }
+
+      .success__actions {
+        flex-direction: column;
+      }
+
+      .brands__list {
+        font-size: 15px;
+        gap: 8px 20px;
+      }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .hero__left {
+        padding: 48px 36px;
+      }
+
+      .benefits__grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .benefit-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero__left">
+      <div class="hero__logo fade-up">
+        <img src="sunction-logo-transparent.png" alt="sunction.store">
+      </div>
+
+      <p class="hero__eyebrow fade-up fade-up-delay-1">19 апреля, Москва</p>
+
+      <h1 class="hero__title fade-up fade-up-delay-1">День стилиста в&nbsp;sunction.store</h1>
+
+      <p class="hero__subtitle fade-up fade-up-delay-2">
+        Поможем подобрать очки с&nbsp;учётом формы лица, цветотипа и&nbsp;личного стиля — Tom&nbsp;Ford, Prada, Gucci и&nbsp;ещё 50+ брендов
+      </p>
+
+      <div class="hero__value fade-up fade-up-delay-2">
+        <span class="hero__value-badge">Бесплатно</span>
+        <span>20-минутная консультация стилиста</span>
+      </div>
+
+      <div class="hero__info fade-up fade-up-delay-3">
+        <span class="hero__info-item">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          19 апреля, 12:00–16:00
+        </span>
+        <span class="hero__info-item">
+          <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Москва, ул. Земляной Вал, д.&nbsp;7
+        </span>
+      </div>
+
+      <a href="#signup" class="hero__cta fade-up fade-up-delay-3">Забронировать место</a>
+      <p class="hero__cta-note fade-up fade-up-delay-4">Запись не&nbsp;обязывает к&nbsp;покупке</p>
+    </div>
+
+    <div class="hero__right">
+      <div class="hero__image fade-up">
+        <img src="0c3dec31_img_2K.jpg" alt="Стилист подбирает очки клиенту">
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BRANDS ===== -->
+  <section class="brands">
+    <div class="brands__track">
+      <div class="brands__set">
+        <span class="brands__item"><img src="Logo/150.png" alt="Tom Ford"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/25.png" alt="Prada"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/92.png" alt="Gucci"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/154.png" alt="Dior"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/28.png" alt="Ray-Ban"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/99.png" alt="Saint Laurent"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/153.png" alt="Celine"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/13.png" alt="Chanel"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/64.png" alt="Marc Jacobs"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/83.png" alt="Balenciaga"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/156.png" alt="Fendi"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/35.png" alt="Versace"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/20.png" alt="Oakley"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/11.png" alt="Burberry"></span><span class="brands__dot"></span>
+      </div>
+      <div class="brands__set">
+        <span class="brands__item"><img src="Logo/150.png" alt="Tom Ford"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/25.png" alt="Prada"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/92.png" alt="Gucci"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/154.png" alt="Dior"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/28.png" alt="Ray-Ban"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/99.png" alt="Saint Laurent"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/153.png" alt="Celine"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/13.png" alt="Chanel"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/64.png" alt="Marc Jacobs"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/83.png" alt="Balenciaga"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/156.png" alt="Fendi"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/35.png" alt="Versace"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/20.png" alt="Oakley"></span><span class="brands__dot"></span>
+        <span class="brands__item"><img src="Logo/11.png" alt="Burberry"></span><span class="brands__dot"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STYLIST ===== -->
+  <section class="stylist">
+    <div class="stylist__inner fade-up">
+      <div class="stylist__photo">
+        <img src="stylist-valentina.jpeg" alt="Валентина Шашкова — стилист sunction.store">
+      </div>
+      <div class="stylist__content">
+        <p class="stylist__eyebrow">Ваш стилист</p>
+        <h3 class="stylist__name">Валентина Шашкова</h3>
+        <p class="stylist__bio">
+          Более 5&nbsp;лет создаёт гардеробы, отражающие индивидуальность.
+        </p>
+        <blockquote class="stylist__quote">
+          &laquo;Подберу очки, которые соединяют актуальные тренды и&nbsp;вашу индивидуальность, становясь частью вашего образа.&raquo;
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BENEFITS ===== -->
+  <section class="benefits">
+    <div class="benefits__inner">
+      <h2 class="benefits__title fade-up">Что вы&nbsp;получите</h2>
+      <div class="benefits__grid">
+        <div class="benefit-card fade-up fade-up-delay-1">
+          <div class="benefit-card__number">01</div>
+          <h3 class="benefit-card__title">Консультацию стилиста</h3>
+          <p class="benefit-card__text">Узнаете, какая форма и&nbsp;цвет оправы подходит именно вам. Уйдёте с&nbsp;чётким пониманием, что вам подходит.</p>
+        </div>
+        <div class="benefit-card fade-up fade-up-delay-2">
+          <div class="benefit-card__number">02</div>
+          <h3 class="benefit-card__title">Подарок при покупке</h3>
+          <p class="benefit-card__text">Комплиментарный набор по&nbsp;уходу за&nbsp;очками — в&nbsp;подарок к&nbsp;любой покупке в&nbsp;день мероприятия.</p>
+        </div>
+        <div class="benefit-card fade-up fade-up-delay-3">
+          <div class="benefit-card__number">03</div>
+          <h3 class="benefit-card__title">Особые условия</h3>
+          <p class="benefit-card__text">Участники события получают специальные цены на&nbsp;коллекции. Условия действуют только в&nbsp;день мероприятия.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SIGNUP ===== -->
+  <section class="signup" id="signup">
+    <div class="signup__inner">
+      <div class="signup__spots fade-up">
+        <span class="signup__spots-dot"></span>
+        Осталось 8 мест
+      </div>
+
+      <h2 class="signup__title fade-up fade-up-delay-1">Запишитесь на&nbsp;консультацию</h2>
+      <p class="signup__subtitle fade-up fade-up-delay-1">Всего доступно 12&nbsp;слотов</p>
+
+      <div class="signup__form fade-up fade-up-delay-2" id="formCard">
+        <form id="signupForm">
+          <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" id="name" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <label class="form-checkbox">
+            <input type="checkbox" id="consent">
+            <span class="form-checkbox__box">
+              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+            </span>
+            <span class="form-checkbox__text">
+              Я&nbsp;даю согласие на&nbsp;<a href="#" target="_blank">обработку персональных данных</a>
+            </span>
+          </label>
+          <button type="submit" class="form-submit" id="submitBtn" disabled>Забронировать место</button>
+          <p class="form-note">Бесплатно и&nbsp;без обязательств покупки. Если планы изменятся — просто сообщите нам.</p>
+        </form>
+
+        <div class="success" id="successMessage">
+          <div class="success__icon">
+            <svg viewBox="0 0 24 24"><polyline points="6,12 10,16 18,8"/></svg>
+          </div>
+          <h3 class="success__title" id="successTitle">Место за вами!</h3>
+          <p class="success__booking" id="successBooking"></p>
+
+          <div class="success__details">
+            <div class="success__detail">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>19 апреля, суббота, 12:00–16:00</span>
+            </div>
+            <div class="success__detail">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Москва, ул. Земляной Вал, д. 7</span>
+            </div>
+            <div class="success__detail">
+              <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+7 499 288 16 63</span>
+            </div>
+          </div>
+
+          <div class="success__actions">
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=%D0%94%D0%B5%D0%BD%D1%8C+%D1%81%D1%82%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D0%B0+sunction.store&dates=20260419T110000Z/20260419T150000Z&location=%D0%9C%D0%BE%D1%81%D0%BA%D0%B2%D0%B0%2C+%D1%83%D0%BB.+%D0%97%D0%B5%D0%BC%D0%BB%D1%8F%D0%BD%D0%BE%D0%B9+%D0%92%D0%B0%D0%BB%2C+%D0%B4.+7&details=%D0%97%D0%B0%D0%BF%D0%B8%D1%81%D1%8C+%D0%BD%D0%B0+%D0%BF%D0%BE%D0%B4%D0%B1%D0%BE%D1%80+%D0%BE%D1%87%D0%BA%D0%BE%D0%B2+%D1%81%D0%BE+%D1%81%D1%82%D0%B8%D0%BB%D0%B8%D1%81%D1%82%D0%BE%D0%BC" target="_blank" class="success__btn success__btn--primary">
+              <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              В календарь
+            </a>
+            <a href="https://yandex.ru/maps/?text=Москва+Земляной+Вал+7" target="_blank" class="success__btn success__btn--secondary">
+              <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Маршрут
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="footer__logo">
+      <img src="sunction-logo-transparent.png" alt="sunction.store">
+    </div>
+    <div class="footer__contacts">
+      <a href="tel:+74992881663" class="footer__link">+7 499 288 16 63</a>
+      <span class="footer__link">Москва, ул. Земляной Вал, д.&nbsp;7</span>
+    </div>
+    <p class="footer__copy">&copy; 2026 sunction.store</p>
+  </footer>
+
+  <script>
+    // --- Scroll reveal ---
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -30px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+    // --- Checkbox → submit ---
+    const consent = document.getElementById('consent');
+    const submitBtn = document.getElementById('submitBtn');
+    consent.addEventListener('change', () => {
+      submitBtn.disabled = !consent.checked;
+    });
+
+    // --- Form submit ---
+    const form = document.getElementById('signupForm');
+    const successMessage = document.getElementById('successMessage');
+    const successTitle = document.getElementById('successTitle');
+    const successBooking = document.getElementById('successBooking');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Отправка...';
+
+      const userName = document.getElementById('name').value;
+      const data = {
+        name: userName,
+        phone: "'" + document.getElementById('phone').value
+      };
+
+      // Номер брони
+      const bookingNum = Math.floor(Math.random() * 12) + 5;
+
+      fetch('https://script.google.com/macros/s/AKfycbxSnfOJMrQrJVJPmAb2WPRIRZ-_FmfWAvCcrITDOB1aoEyAFv426FI8yPvS2PtZJ7rj/exec', {
+        method: 'POST',
+        body: JSON.stringify(data)
+      })
+      .then(() => showSuccess(userName, bookingNum))
+      .catch(() => showSuccess(userName, bookingNum));
+    });
+
+    function showSuccess(name, num) {
+      form.style.display = 'none';
+      successTitle.textContent = name + ', место за вами!';
+      successBooking.textContent = 'Мы свяжемся для подтверждения времени';
+      successMessage.classList.add('show');
+    }
+
+    // --- Phone mask ---
+    const phoneInput = document.getElementById('phone');
+    phoneInput.addEventListener('input', (e) => {
+      let v = e.target.value.replace(/\D/g, '');
+      if (v.startsWith('8')) v = '7' + v.slice(1);
+      if (!v.startsWith('7') && v.length > 0) v = '7' + v;
+      let f = '';
+      if (v.length > 0) f = '+7';
+      if (v.length > 1) f += ' (' + v.slice(1, 4);
+      if (v.length > 4) f += ') ' + v.slice(4, 7);
+      if (v.length > 7) f += '-' + v.slice(7, 9);
+      if (v.length > 9) f += '-' + v.slice(9, 11);
+      e.target.value = f;
+    });
+  </script>
+
+</body>
+</html>
