@@ -1101,11 +1101,31 @@
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
+    // --- Metrika helper ---
+    function reachGoal(name) {
+      if (typeof ym === 'function') ym(108521435, 'reachGoal', name);
+    }
+
+    // --- Hero CTA click ---
+    document.querySelectorAll('.hero__cta').forEach(el => {
+      el.addEventListener('click', () => reachGoal('hero_cta_click'));
+    });
+
+    // --- Form start (first focus on any field) ---
+    let formStartFired = false;
+    ['name', 'phone'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.addEventListener('focus', () => {
+        if (!formStartFired) { formStartFired = true; reachGoal('form_start'); }
+      });
+    });
+
     // --- Checkbox → submit ---
     const consent = document.getElementById('consent');
     const submitBtn = document.getElementById('submitBtn');
     consent.addEventListener('change', () => {
       submitBtn.disabled = !consent.checked;
+      if (consent.checked) reachGoal('consent_check');
     });
 
     // --- Form submit ---
@@ -1141,7 +1161,7 @@
       successTitle.textContent = name + ', место за вами!';
       successBooking.textContent = 'Мы свяжемся для подтверждения времени';
       successMessage.classList.add('show');
-      if (typeof ym === 'function') ym(108521435, 'reachGoal', 'form_submit');
+      reachGoal('form_submit');
     }
 
     // --- Phone mask ---
