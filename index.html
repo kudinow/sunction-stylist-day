@@ -1438,6 +1438,9 @@
       successTitle.textContent = name + ', место за вами!';
       successBooking.textContent = 'Мы свяжемся для подтверждения времени';
       successMessage.classList.add('show');
+      localStorage.setItem(KEY_SUBMITTED, 'true');
+      var nudge = document.getElementById('trustNudge');
+      if (nudge) nudge.classList.remove('visible');
       reachGoal('form_submit');
     }
 
