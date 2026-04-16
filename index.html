@@ -1119,6 +1119,23 @@
       if (typeof ym === 'function') ym(108521435, 'reachGoal', name);
     }
 
+    // --- Shared state keys ---
+    const KEY_SUBMITTED = 'sunction_submitted';
+    const KEY_POPUP_SHOWN = 'sunction_popup_shown';
+    const KEY_NUDGE_SHOWN = 'sunction_nudge_shown';
+
+    // --- Countdown to 2026-04-19 12:00 Moscow ---
+    function getCountdown() {
+      const target = new Date('2026-04-19T12:00:00+03:00');
+      const diff = target - new Date();
+      if (diff <= 0) return { days: 0, hours: 0, minutes: 0 };
+      return {
+        days:    Math.floor(diff / 86400000),
+        hours:   Math.floor((diff % 86400000) / 3600000),
+        minutes: Math.floor((diff % 3600000)  / 60000)
+      };
+    }
+
     // --- Hero CTA click ---
     document.querySelectorAll('.hero__cta').forEach(el => {
       el.addEventListener('click', () => reachGoal('hero_cta_click'));
