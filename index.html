@@ -1501,6 +1501,8 @@
 
     // ===== EXIT INTENT POPUP =====
     (function () {
+      var intervalId;
+
       function updatePopupCountdown() {
         var cd = getCountdown();
         document.getElementById('popupDays').textContent    = cd.days;
@@ -1533,12 +1535,12 @@
 
       // Escape key
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closePopup();
+        if (e.key === 'Escape' && document.getElementById('exitPopup').classList.contains('visible')) closePopup();
       });
 
       // Exit intent: mouse leaves through top of viewport (desktop only)
       document.addEventListener('mouseleave', function (e) {
-        if (e.clientY < 10) openPopup();
+        if (e.clientY < 10 && window.innerWidth >= 768) openPopup();
       });
 
       // Consent → enable submit button
@@ -1580,6 +1582,7 @@
       });
 
       function showPopupSuccess(name) {
+        clearInterval(intervalId);
         document.getElementById('popupFormWrap').style.display = 'none';
         document.getElementById('popupSuccessTitle').textContent = name + ', место за вами!';
         document.getElementById('popupSuccess').classList.add('show');
@@ -1591,7 +1594,7 @@
       }
 
       // Refresh countdown every minute (also updates nudge countdown)
-      setInterval(function () {
+      intervalId = setInterval(function () {
         updatePopupCountdown();
         var nudgeEl = document.getElementById('nudgeCountdown');
         if (nudgeEl) {
