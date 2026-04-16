@@ -197,6 +197,36 @@
       margin-top: 10px;
     }
 
+    .hero__cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-self: flex-start;
+    }
+
+    .hero__cta--tg {
+      background: transparent;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .hero__cta--tg:hover {
+      background: var(--bg);
+      border-color: #aaa;
+    }
+
+    .hero__cta--tg:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+    }
+
+    .hero__cta--tg svg {
+      width: 18px;
+      height: 18px;
+      fill: #27A7E5;
+      flex-shrink: 0;
+    }
+
     .hero__right {
       position: relative;
       overflow: hidden;
@@ -870,6 +900,17 @@
         gap: 6px;
       }
 
+      .hero__cta-group {
+        flex-direction: column;
+        align-self: stretch;
+        width: 100%;
+      }
+
+      .hero__cta-group .hero__cta {
+        justify-content: center;
+        align-self: stretch;
+      }
+
       .stylist__inner {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1162,7 +1203,20 @@
         </span>
       </div>
 
-      <a href="#signup" class="hero__cta fade-up fade-up-delay-3">Забронировать место</a>
+      <div class="hero__cta-group fade-up fade-up-delay-3">
+        <a href="#signup" class="hero__cta">Забронировать место</a>
+        <a
+          href="https://t.me/sunctionstore_event_bot"
+          target="_blank"
+          rel="noopener"
+          class="hero__cta hero__cta--tg"
+        >
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L8.32 13.617l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.828.942z"/>
+          </svg>
+          Через Telegram
+        </a>
+      </div>
       <p class="hero__cta-note fade-up fade-up-delay-4">Запись не&nbsp;обязывает к&nbsp;покупке</p>
     </div>
 
