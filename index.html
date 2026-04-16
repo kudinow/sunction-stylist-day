@@ -1499,7 +1499,13 @@
         });
       }, { threshold: 0.3 });
 
-      if (signupSection) signupObserver.observe(signupSection);
+      if (signupSection) {
+        if (sessionStorage.getItem(KEY_NUDGE_SHOWN) || localStorage.getItem(KEY_SUBMITTED)) {
+          // already shown or submitted — no need to observe
+        } else {
+          signupObserver.observe(signupSection);
+        }
+      }
     })();
 
     // ===== EXIT INTENT POPUP =====
@@ -1526,6 +1532,7 @@
       function closePopup() {
         document.getElementById('exitPopup').classList.remove('visible');
         document.body.classList.remove('popup-open');
+        clearInterval(intervalId);
       }
 
       // Close button
