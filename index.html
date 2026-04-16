@@ -636,6 +636,11 @@
       background: var(--bg);
     }
 
+    .tg-alt:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 2px;
+    }
+
     .tg-alt svg {
       width: 18px;
       height: 18px;
@@ -1497,6 +1502,10 @@
 
     function showSuccess(name, num) {
       form.style.display = 'none';
+      var tgDivider = document.querySelector('.tg-alt-divider');
+      var tgBtn     = document.querySelector('.tg-alt');
+      if (tgDivider) tgDivider.style.display = 'none';
+      if (tgBtn)     tgBtn.style.display     = 'none';
       successTitle.textContent = name + ', место за вами!';
       successBooking.textContent = 'Мы свяжемся для подтверждения времени';
       successMessage.classList.add('show');
