@@ -1295,6 +1295,62 @@
     <p class="footer__copy">&copy; 2026 sunction.store</p>
   </footer>
 
+  <!-- ===== EXIT INTENT POPUP ===== -->
+  <div class="popup-overlay" id="exitPopup" role="dialog" aria-modal="true" aria-labelledby="popupEyebrow">
+    <div class="popup">
+      <button type="button" class="popup__close" id="popupCloseBtn" aria-label="Закрыть">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <p class="popup__eyebrow" id="popupEyebrow">До события</p>
+      <div class="popup__countdown">
+        <span><span id="popupDays">3</span> дн.</span>
+        <span class="popup__countdown-sep">·</span>
+        <span><span id="popupHours">4</span> ч.</span>
+        <span class="popup__countdown-sep">·</span>
+        <span><span id="popupMinutes">22</span> мин.</span>
+      </div>
+
+      <div class="popup__spots">
+        <span class="popup__spots-dot"></span>
+        Осталось 8 мест из 12
+      </div>
+
+      <p class="popup__trust">Запись бесплатная. Телефон — только для подтверждения времени. Спам не отправляем.</p>
+
+      <div id="popupFormWrap">
+        <form id="exitForm">
+          <div class="form-group">
+            <label for="popupName">Имя</label>
+            <input type="text" id="popupName" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <label for="popupPhone">Телефон</label>
+            <input type="tel" id="popupPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <label class="form-checkbox">
+            <input type="checkbox" id="popupConsent">
+            <span class="form-checkbox__box">
+              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+            </span>
+            <span class="form-checkbox__text">
+              Я даю согласие на <a href="privacy.html" target="_blank" rel="noopener">обработку персональных данных</a>
+            </span>
+          </label>
+          <button type="submit" class="form-submit" id="popupSubmitBtn" disabled>Забронировать место</button>
+        </form>
+      </div>
+
+      <div class="success" id="popupSuccess">
+        <div class="success__icon">
+          <svg viewBox="0 0 24 24"><polyline points="6,12 10,16 18,8"/></svg>
+        </div>
+        <h3 class="success__title" id="popupSuccessTitle">Место за вами!</h3>
+        <p class="success__booking">Мы свяжемся для подтверждения времени</p>
+      </div>
+    </div>
+  </div>
+
   <script>
     // --- Scroll reveal ---
     const observer = new IntersectionObserver((entries) => {
@@ -1545,62 +1601,5 @@
       }, 60000);
     })();
   </script>
-
-  <!-- ===== EXIT INTENT POPUP ===== -->
-  <div class="popup-overlay" id="exitPopup" role="dialog" aria-modal="true" aria-labelledby="popupEyebrow">
-    <div class="popup">
-      <button type="button" class="popup__close" id="popupCloseBtn" aria-label="Закрыть">
-        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-      </button>
-
-      <p class="popup__eyebrow" id="popupEyebrow">До события</p>
-      <div class="popup__countdown">
-        <span><span id="popupDays">3</span> дн.</span>
-        <span class="popup__countdown-sep">·</span>
-        <span><span id="popupHours">4</span> ч.</span>
-        <span class="popup__countdown-sep">·</span>
-        <span><span id="popupMinutes">22</span> мин.</span>
-      </div>
-
-      <div class="popup__spots">
-        <span class="popup__spots-dot"></span>
-        Осталось 8 мест из 12
-      </div>
-
-      <p class="popup__trust">Запись бесплатная. Телефон — только для подтверждения времени. Спам не отправляем.</p>
-
-      <div id="popupFormWrap">
-        <form id="exitForm">
-          <div class="form-group">
-            <label for="popupName">Имя</label>
-            <input type="text" id="popupName" name="name" placeholder="Ваше имя" required>
-          </div>
-          <div class="form-group">
-            <label for="popupPhone">Телефон</label>
-            <input type="tel" id="popupPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
-          </div>
-          <label class="form-checkbox">
-            <input type="checkbox" id="popupConsent">
-            <span class="form-checkbox__box">
-              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
-            </span>
-            <span class="form-checkbox__text">
-              Я даю согласие на <a href="privacy.html" target="_blank" rel="noopener">обработку персональных данных</a>
-            </span>
-          </label>
-          <button type="submit" class="form-submit" id="popupSubmitBtn" disabled>Забронировать место</button>
-        </form>
-      </div>
-
-      <div class="success" id="popupSuccess">
-        <div class="success__icon">
-          <svg viewBox="0 0 24 24"><polyline points="6,12 10,16 18,8"/></svg>
-        </div>
-        <h3 class="success__title" id="popupSuccessTitle">Место за вами!</h3>
-        <p class="success__booking">Мы свяжемся для подтверждения времени</p>
-      </div>
-    </div>
-  </div>
-
 </body>
 </html>
