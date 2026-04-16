@@ -1299,6 +1299,8 @@
         if (sessionStorage.getItem(KEY_NUDGE_SHOWN)) return;
         if (localStorage.getItem(KEY_SUBMITTED)) return;
         sessionStorage.setItem(KEY_NUDGE_SHOWN, '1');
+        nudgeTimer = null;
+        signupObserver.disconnect();
         updateNudgeCountdown();
         document.getElementById('trustNudge').classList.add('visible');
         reachGoal('trust_nudge_show');
@@ -1322,7 +1324,7 @@
         });
       }, { threshold: 0.3 });
 
-      signupObserver.observe(signupSection);
+      if (signupSection) signupObserver.observe(signupSection);
     })();
   </script>
 
