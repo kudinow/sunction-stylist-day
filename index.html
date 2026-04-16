@@ -1283,6 +1283,47 @@
       if (v.length > 9) f += '-' + v.slice(9, 11);
       e.target.value = f;
     });
+
+    // ===== TRUST NUDGE =====
+    (function () {
+      var nudgeTimer = null;
+
+      function updateNudgeCountdown() {
+        var el = document.getElementById('nudgeCountdown');
+        if (!el) return;
+        var cd = getCountdown();
+        el.textContent = cd.days > 0 ? cd.days + ' дн.' : cd.hours + ' ч.';
+      }
+
+      function showNudge() {
+        if (sessionStorage.getItem(KEY_NUDGE_SHOWN)) return;
+        if (localStorage.getItem(KEY_SUBMITTED)) return;
+        sessionStorage.setItem(KEY_NUDGE_SHOWN, '1');
+        updateNudgeCountdown();
+        document.getElementById('trustNudge').classList.add('visible');
+        reachGoal('trust_nudge_show');
+      }
+
+      // Close button
+      document.getElementById('trustNudgeClose').addEventListener('click', function () {
+        document.getElementById('trustNudge').classList.remove('visible');
+      });
+
+      // IntersectionObserver — start timer when #signup is in view
+      var signupSection = document.getElementById('signup');
+      var signupObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            if (!nudgeTimer) nudgeTimer = setTimeout(showNudge, 8000);
+          } else {
+            clearTimeout(nudgeTimer);
+            nudgeTimer = null;
+          }
+        });
+      }, { threshold: 0.3 });
+
+      signupObserver.observe(signupSection);
+    })();
   </script>
 
 </body>
