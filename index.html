@@ -943,6 +943,122 @@
       stroke-width: 2;
       display: block;
     }
+    /* ===== EXIT POPUP ===== */
+    .popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: overlayFadeIn 0.3s ease;
+    }
+
+    .popup-overlay.visible {
+      display: flex;
+      animation: overlayFadeIn 0.3s ease;
+    }
+
+    @keyframes overlayFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    .popup {
+      background: #fff;
+      border-radius: 16px;
+      padding: 36px 32px;
+      max-width: 440px;
+      width: 100%;
+      position: relative;
+      animation: popupSlideUp 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    @keyframes popupSlideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .popup__close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--text-muted);
+      padding: 4px;
+      line-height: 1;
+    }
+
+    .popup__close:hover { color: var(--text); }
+
+    .popup__close svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      display: block;
+    }
+
+    .popup__eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .popup__countdown {
+      font-family: 'Cormorant', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--text);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .popup__countdown-sep {
+      font-size: 20px;
+      color: var(--border);
+    }
+
+    .popup__spots {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--bg-dark);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+    }
+
+    .popup__spots-dot {
+      width: 6px;
+      height: 6px;
+      background: #4ADE80;
+      border-radius: 50%;
+      animation: pulse-dot 2s infinite;
+    }
+
+    .popup__trust {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
   </style>
 
   <!-- Yandex.Metrika counter -->
@@ -1327,6 +1443,62 @@
       if (signupSection) signupObserver.observe(signupSection);
     })();
   </script>
+
+  <!-- ===== EXIT INTENT POPUP ===== -->
+  <div class="popup-overlay" id="exitPopup">
+    <div class="popup">
+      <button type="button" class="popup__close" id="popupCloseBtn">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <p class="popup__eyebrow">До события</p>
+      <div class="popup__countdown">
+        <span><span id="popupDays">3</span> дн.</span>
+        <span class="popup__countdown-sep">·</span>
+        <span><span id="popupHours">4</span> ч.</span>
+        <span class="popup__countdown-sep">·</span>
+        <span><span id="popupMinutes">22</span> мин.</span>
+      </div>
+
+      <div class="popup__spots">
+        <span class="popup__spots-dot"></span>
+        Осталось 8 мест из 12
+      </div>
+
+      <p class="popup__trust">Запись бесплатная. Телефон — только для подтверждения времени. Спам не отправляем.</p>
+
+      <div id="popupFormWrap">
+        <form id="exitForm">
+          <div class="form-group">
+            <label for="popupName">Имя</label>
+            <input type="text" id="popupName" name="name" placeholder="Ваше имя" required>
+          </div>
+          <div class="form-group">
+            <label for="popupPhone">Телефон</label>
+            <input type="tel" id="popupPhone" name="phone" placeholder="+7 (___) ___-__-__" required>
+          </div>
+          <label class="form-checkbox">
+            <input type="checkbox" id="popupConsent">
+            <span class="form-checkbox__box">
+              <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+            </span>
+            <span class="form-checkbox__text">
+              Я даю согласие на <a href="privacy.html" target="_blank" rel="noopener">обработку персональных данных</a>
+            </span>
+          </label>
+          <button type="submit" class="form-submit" id="popupSubmitBtn" disabled>Забронировать место</button>
+        </form>
+      </div>
+
+      <div class="success" id="popupSuccess">
+        <div class="success__icon">
+          <svg viewBox="0 0 24 24"><polyline points="6,12 10,16 18,8"/></svg>
+        </div>
+        <h3 class="success__title" id="popupSuccessTitle">Место за вами!</h3>
+        <p class="success__booking">Мы свяжемся для подтверждения времени</p>
+      </div>
+    </div>
+  </div>
 
 </body>
 </html>
