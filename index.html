@@ -1483,8 +1483,8 @@
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
     // --- Metrika helper ---
-    function reachGoal(name) {
-      if (typeof ym === 'function') ym(108521435, 'reachGoal', name);
+    function reachGoal(name, params) {
+      if (typeof ym === 'function') ym(108521435, 'reachGoal', name, params);
     }
 
     // --- Shared state keys ---
@@ -1504,9 +1504,17 @@
       };
     }
 
-    // --- Hero CTA click ---
-    document.querySelectorAll('.hero__cta').forEach(el => {
+    // --- Hero CTA click (only primary, not the TG variant) ---
+    document.querySelectorAll('.hero__cta:not(.hero__cta--tg)').forEach(el => {
       el.addEventListener('click', () => reachGoal('hero_cta_click'));
+    });
+
+    // --- Telegram button clicks (hero + under-form) ---
+    document.querySelectorAll('.hero__cta--tg').forEach(el => {
+      el.addEventListener('click', () => reachGoal('tg_click', { source: 'hero' }));
+    });
+    document.querySelectorAll('.tg-alt').forEach(el => {
+      el.addEventListener('click', () => reachGoal('tg_click', { source: 'form' }));
     });
 
     // --- Form start (first focus on any field) ---
