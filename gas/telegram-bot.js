@@ -16,8 +16,12 @@ function doPost(e) {
     return ContentService.createTextOutput('Unauthorized');
   }
 
-  var update = JSON.parse(e.postData.contents);
-  handleUpdate(update);
+  try {
+    var update = JSON.parse(e.postData.contents);
+    handleUpdate(update);
+  } catch (err) {
+    Logger.log('Error: ' + err);
+  }
   return ContentService.createTextOutput('OK');
 }
 
@@ -43,12 +47,20 @@ function handleUpdate(update) {
   }
 
   if (state.step === 'awaiting_name') {
+    if (!text) {
+      sendMessage(chatId, 'Пожалуйста, напишите ваше имя текстом.');
+      return;
+    }
     setState(chatId, { step: 'awaiting_phone', name: text });
     sendMessage(chatId, 'Отлично, ' + text + '! Укажите номер телефона:');
     return;
   }
 
   if (state.step === 'awaiting_phone') {
+    if (!text) {
+      sendMessage(chatId, 'Пожалуйста, напишите номер телефона текстом.');
+      return;
+    }
     var confirmText = 'Проверьте данные:\nИмя: ' + state.name + '\nТелефон: ' + text + '\nВсё верно?';
     setState(chatId, { step: 'awaiting_confirm', name: state.name, phone: text });
     sendMessage(chatId, confirmText, {
@@ -83,6 +95,8 @@ function handleCallback(callbackQuery) {
     sendMessage(chatId, 'Хорошо, начнём сначала. Как вас зовут?');
     return;
   }
+
+  sendMessage(chatId, 'Что-то пошло не так. Напишите /start чтобы начать заново.');
 }
 
 // ---------- состояние ----------
@@ -138,7 +152,8 @@ function registerWebhook() {
   var token   = PropertiesService.getScriptProperties().getProperty('BOT_TOKEN');
   var secret  = PropertiesService.getScriptProperties().getProperty('WEBHOOK_SECRET');
   var webApp  = PropertiesService.getScriptProperties().getProperty('WEB_APP_URL');
-  var url     = 'https://api.telegram.org/bot' + token + '/setWebhook?url=' + webApp + '?token=' + secret;
+  var url     = 'https://api.telegram.org/bot' + token +
+                '/setWebhook?url=' + encodeURIComponent(webApp + '?token=' + secret);
   var resp    = UrlFetchApp.fetch(url);
   Logger.log(resp.getContentText()); // должно быть {"ok":true,...}
 }
