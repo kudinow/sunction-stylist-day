@@ -1442,6 +1442,108 @@
 
       if (signupSection) signupObserver.observe(signupSection);
     })();
+
+    // ===== EXIT INTENT POPUP =====
+    (function () {
+      function updatePopupCountdown() {
+        var cd = getCountdown();
+        document.getElementById('popupDays').textContent    = cd.days;
+        document.getElementById('popupHours').textContent   = cd.hours;
+        document.getElementById('popupMinutes').textContent = cd.minutes;
+      }
+
+      function openPopup() {
+        if (sessionStorage.getItem(KEY_POPUP_SHOWN)) return;
+        if (localStorage.getItem(KEY_SUBMITTED)) return;
+        sessionStorage.setItem(KEY_POPUP_SHOWN, '1');
+        updatePopupCountdown();
+        document.getElementById('exitPopup').classList.add('visible');
+        document.body.classList.add('popup-open');
+        reachGoal('exit_popup_show');
+      }
+
+      function closePopup() {
+        document.getElementById('exitPopup').classList.remove('visible');
+        document.body.classList.remove('popup-open');
+      }
+
+      // Close button
+      document.getElementById('popupCloseBtn').addEventListener('click', closePopup);
+
+      // Click on overlay background (not on popup card)
+      document.getElementById('exitPopup').addEventListener('click', function (e) {
+        if (e.target === this) closePopup();
+      });
+
+      // Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closePopup();
+      });
+
+      // Exit intent: mouse leaves through top of viewport (desktop only)
+      document.addEventListener('mouseleave', function (e) {
+        if (e.clientY < 10) openPopup();
+      });
+
+      // Consent → enable submit button
+      var popupConsent   = document.getElementById('popupConsent');
+      var popupSubmitBtn = document.getElementById('popupSubmitBtn');
+      popupConsent.addEventListener('change', function () {
+        popupSubmitBtn.disabled = !popupConsent.checked;
+      });
+
+      // Phone mask (same logic as main form)
+      document.getElementById('popupPhone').addEventListener('input', function (e) {
+        var v = e.target.value.replace(/\D/g, '');
+        if (v.startsWith('8')) v = '7' + v.slice(1);
+        if (!v.startsWith('7') && v.length > 0) v = '7' + v;
+        var f = '';
+        if (v.length > 0) f = '+7';
+        if (v.length > 1) f += ' (' + v.slice(1, 4);
+        if (v.length > 4) f += ') ' + v.slice(4, 7);
+        if (v.length > 7) f += '-' + v.slice(7, 9);
+        if (v.length > 9) f += '-' + v.slice(9, 11);
+        e.target.value = f;
+      });
+
+      // Form submit
+      document.getElementById('exitForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        popupSubmitBtn.disabled = true;
+        popupSubmitBtn.textContent = 'Отправка...';
+
+        var name = document.getElementById('popupName').value;
+        var data = { name: name, phone: "'" + document.getElementById('popupPhone').value };
+
+        fetch('https://script.google.com/macros/s/AKfycbxSnfOJMrQrJVJPmAb2WPRIRZ-_FmfWAvCcrITDOB1aoEyAFv426FI8yPvS2PtZJ7rj/exec', {
+          method: 'POST',
+          body: JSON.stringify(data)
+        })
+        .then(function () { showPopupSuccess(name); })
+        .catch(function () { showPopupSuccess(name); });
+      });
+
+      function showPopupSuccess(name) {
+        document.getElementById('popupFormWrap').style.display = 'none';
+        document.getElementById('popupSuccessTitle').textContent = name + ', место за вами!';
+        document.getElementById('popupSuccess').classList.add('show');
+        localStorage.setItem(KEY_SUBMITTED, 'true');
+        var nudge = document.getElementById('trustNudge');
+        if (nudge) nudge.classList.remove('visible');
+        reachGoal('exit_popup_submit');
+        reachGoal('form_submit');
+      }
+
+      // Refresh countdown every minute (also updates nudge countdown)
+      setInterval(function () {
+        updatePopupCountdown();
+        var nudgeEl = document.getElementById('nudgeCountdown');
+        if (nudgeEl) {
+          var cd = getCountdown();
+          nudgeEl.textContent = cd.days > 0 ? cd.days + ' дн.' : cd.hours + ' ч.';
+        }
+      }, 60000);
+    })();
   </script>
 
   <!-- ===== EXIT INTENT POPUP ===== -->
